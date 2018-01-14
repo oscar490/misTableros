@@ -4,33 +4,7 @@
 			<meta charset='utf-8' />
 		<link rel="stylesheet" href="estilos.css">
 		<script src='jquery-3.2.1.js'></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('div .tablero').on('click', function() {
-
-				})
-
-				function mostrarFormulario() {
-					$('#formulario').fadeIn();
-				}
-
-				$('input').on('click', function() {
-					mostrarFormulario();
-				});
-
-				$('#crear').on('click', function() {
-					let nombre = $('input:text')[0].value;
-					$('#formulario').fadeOut();
-
-					let tablero = $(`<div>${nombre}</div>`);
-					tablero.addClass('tablero');
-					tablero.appendTo($(`.contenedor`));
-
-				});
-
-			})
-
-		</script>
+		<script src='aplicacion.js'></script>
 		</head>
 		<body>
 		<?php

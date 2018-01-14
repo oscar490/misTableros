@@ -4,6 +4,11 @@
     <head>
         <meta charset="utf-8">
         <title>Tablero</title>
+        <link rel="stylesheet" href="estilos.css">
+        <script src='jquery-3.2.1.js'></script>
+        <script src='aplicacion.js'>
+
+        </script>
     </head>
     <body>
         <?php
@@ -22,5 +27,17 @@
         ?>
 
         <h1><?= $nombre ?></h1>
+        <div class="contenedor">
+
+        </div>
+        <div id='formulario'>
+            <form>
+                Nombre <input type='text' name='nombre'>
+                <input type='submit' value='Crear' id='crear'>
+            </form>
+        </div>
+        <input type="button" name="" value="Añadir lista ...">
+
+        <a href='index.php'>Volver</a>
     </body>
 </html>
