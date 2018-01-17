@@ -20,28 +20,42 @@
 				header("Location: tablero.php?id=$id");
 			}
 
-			$consulta = $pdo->query("SELECT * FROM tableros");
+			$consulta = $pdo->query("SELECT * FROM equipos");
 			$filas = $consulta->fetchAll();
 
+			foreach ($filas as $valor) {
+				$equipos[] = $valor['nombre'];
+			}
+
+
+
+			foreach ($equipos as $valor):
+				$tabs = getTableros($valor, $pdo);
+
+
 		?>
+				<p><?= $valor ?></p>
+					<div class="contenedor">
+						<?php foreach ($tabs as $v): ?>
+							<a href="tablero.php?id=<?= $v['id'] ?>">
+								<div class='tablero'>
+									<?= $v['nombre'] ?>
+								</div>
+							</a>
+						<?php endforeach; ?>
 
-			<div class="contenedor">
-				<?php foreach ($filas as $valor): ?>
-					<a href="tablero.php?id=<?= $valor['id'] ?>">
-						<div class='tablero'>
-							<?= $valor['nombre'] ?>
-						</div>
-					</a>
-				<?php endforeach; ?>
-			</div>
-			<div id='formulario'>
-				<form>
-					Nombre <input type='text' name='nombre'>
-					<input type='submit' value='Crear' id='crear'>
-				</form>
-			</div>
+					</div>
+					<input type="button" name="equipo" value="Crear tablero ...">
+					<div id='formulario'>
+						<form>
+							Nombre <input type='text' name='nombre'>
+							<input type='submit' value='Crear' id='crear'>
+						</form>
+					</div>
+			<?php endforeach ?>
 
-			<input type="button" name="" value="Crear tablero ...">
+
+
 
 
 
