@@ -5,9 +5,14 @@ $(document).ready(function() {
 
     }
 
-    $('body').on('click', '#tablero_crear', function() {
+    $('body').on('click', '#tablero_crear, #crear_equipo', function() {
 
         $(this).parent().next().toggle();
+    });
+
+    $('body').on('click', '#crear_equipo div:first', function() {
+
+        $(this).next().toggle();
     });
 
 

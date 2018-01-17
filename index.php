@@ -17,8 +17,13 @@
 			$equipo = filter_input(INPUT_GET, 'equipo');
 
 			if (count($_GET) != 0) {
-				addTablero($equipo, $nombre, $pdo);
-				$id = getTablero($nombre, $pdo);
+				if ($nombre === null) {
+					addEquipo($equipo, $pdo);
+				} else  {
+					addTablero($equipo, $nombre, $pdo);
+					$id = getTablero($nombre, $pdo);
+
+				}
 				// header("Location: tablero.php?id=$id");
 			}
 
@@ -65,6 +70,17 @@
 
 			<?php endforeach ?>
 
+			<div id='crear_equipo'>
+				<div >
+					Crear equipo nuevo ...
+				</div>
+				<div id='formulario'>
+					<form>
+						Nombre <input type='text' name='equipo'>
+						<input type='submit' value='Crear' id='crear'>
+					</form>
+				</div>
+			</div>
 
 			<script src='aplicacion.js'></script>
 		</body>

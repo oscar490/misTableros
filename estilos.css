@@ -35,3 +35,9 @@ h1 {
 .contenedor {
     overflow: hidden;
 }
+
+
+#crear_equipo {
+    position: absolute;
+    top: 600px;
+}

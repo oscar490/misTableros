@@ -58,3 +58,11 @@ function getTableros($id, $pdo)
 
     return $consulta->fetchAll();
 }
+
+function addEquipo($equipo, $pdo)
+{
+
+    $sentencia = $pdo->prepare("INSERT INTO equipos (nombre)
+                                VALUES (?)");
+    var_dump($sentencia->execute([$equipo]));
+}

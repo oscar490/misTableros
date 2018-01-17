@@ -14,7 +14,6 @@
 
         $filas = getTableros($id, $pdo);
 
-        var_dump($id);
         $consulta = $pdo->prepare("SELECT nombre
                                      FROM equipos
                                     WHERE id = :id");
