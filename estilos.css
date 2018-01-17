@@ -1,20 +1,43 @@
 .tablero {
     background-color: blue;
-    width: 200px;
+    width: 220px;
     height: 100px;
-    text-align: center;
-    line-height: 100px;
+    text-align: left;
+    line-height: 50px;
     color: white;
     font-weight: bold;
     float: left;
     margin: 5px;
+    padding-left: 8px;
+
 
     /*justify-content: space-between;*/
 }
 #formulario {
     display: none;
 }
+h1 {
+    text-align: center;
+}
+
+#tablero_crear {
+    background-color: #E7DBD9;
+    width: 220px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: gray;
+    float: left;
+    margin: 5px;
+
+}
 
 .contenedor {
     overflow: hidden;
+}
+
+
+#crear_equipo {
+    position: absolute;
+    top: 600px;
 }
