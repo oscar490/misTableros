@@ -9,12 +9,22 @@ function iniciar()
     return $pdo;
 }
 
-function addTablero($nombre, $pdo)
+function addTablero($equipo, $nombre, $pdo)
 {
-    $insert = $pdo->prepare("INSERT INTO tableros (nombre)
-                   VALUES (?)");
+    $tablero = $pdo->prepare("INSERT INTO tableros (nombre)
+                                  VALUES  (?)");
 
-    $insert->execute([$nombre]);
+    $tablero->execute([$nombre]);
+
+    $add = $pdo
+        ->prepare("INSERT INTO equipos_tableros (equipo_id, tablero_id)
+                   SELECT e.id, t.id FROM equipos e, tableros t
+                    WHERE t.nombre = :nombre AND e.nombre = :equipo");
+    $add->execute([':nombre'=>$nombre, ':equipo'=>$equipo]);
+
+    // $insertEquipo = $pdo
+    //         ->prepare("INSERT INTO equipos_tableros (equipo_id, tablero_id)
+    //                         VALUES SELECT")
 }
 
 function getTablero($nombre, $pdo)
@@ -30,21 +40,21 @@ function getTablero($nombre, $pdo)
 
 }
 
-function getTableros($nombre, $pdo)
+function getTableros($id, $pdo)
 {
 
 
     $consulta = $pdo
-    ->prepare("SELECT t.id, t.nombre
+    ->prepare("SELECT t.*
                  FROM (tableros t
                  JOIN equipos_tableros et
                    ON t.id = et.tablero_id)
                  JOIN equipos e
                    ON e.id = et.equipo_id
-                WHERE e.nombre = :nombre
+                WHERE e.id = :id
                 ");
 
-    $consulta->execute([':nombre'=>$nombre]);
+    $consulta->execute([':id'=>$id]);
 
     return $consulta->fetchAll();
 }

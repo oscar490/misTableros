@@ -2,12 +2,14 @@
 $(document).ready(function() {
 
     function mostrarFormulario() {
-        $('#formulario').fadeIn();
+
     }
 
-    $('input').on('click', function() {
-        mostrarFormulario();
+    $('body').on('click', '#tablero_crear', function() {
+
+        $(this).parent().next().toggle();
     });
+
 
     $('#crear').on('click', function() {
         let nombre = $('input:text')[0].value;
@@ -15,7 +17,7 @@ $(document).ready(function() {
 
         let tablero = $(`<div>${nombre}</div>`);
         tablero.addClass('tablero');
-        tablero.appendTo($(`.contenedor`));
+        $('#tablero_crear').prev(tablero);
 
     });
 
